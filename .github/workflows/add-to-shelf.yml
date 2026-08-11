@@ -23,7 +23,7 @@ jobs:
           ITEM_URL: ${{ github.event.inputs.url }}
           IFRAMELY_API_KEY: ${{ secrets.IFRAMELY_API_KEY }}
         run: |
-          set -e
+          set -ex
           ENC=$(jq -rn --arg u "$ITEM_URL" '$u|@uri')
           RESPONSE=$(curl -s "https://iframe.ly/api/iframely?url=$ENC&api_key=$IFRAMELY_API_KEY")
 
