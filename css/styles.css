@@ -452,6 +452,80 @@ main,
   color: var(--accent);
 }
 
+/* Contact form */
+.contact-form {
+  margin-top: 24px;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-form-honeypot {
+  display: none;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted-strong);
+}
+
+.form-input {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  padding: 10px 12px;
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.contact-form .btn {
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+.form-status {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  min-height: 1.2em;
+}
+
+.form-status-success {
+  color: #3a7d44;
+}
+
+[data-theme="dark"] .form-status-success {
+  color: #7cc47f;
+}
+
+.form-status-error {
+  color: #b3413e;
+}
+
+[data-theme="dark"] .form-status-error {
+  color: #e08585;
+}
+
 /* Reading Shelf */
 .shelf-list {
   display: grid;

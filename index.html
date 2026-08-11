@@ -185,6 +185,29 @@
         <span class="contact-value">github.com/loremipsum</span>
       </a>
     </div>
+
+    <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="d713944c-77e1-4e18-961b-7151a82fb0da">
+      <input type="checkbox" name="botcheck" class="contact-form-honeypot" tabindex="-1" autocomplete="off">
+
+      <div class="form-row">
+        <label class="form-label" for="contact-name">Name</label>
+        <input class="form-input" type="text" id="contact-name" name="name" required>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="contact-email">Email</label>
+        <input class="form-input" type="email" id="contact-email" name="email" required>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="contact-message">Message</label>
+        <textarea class="form-input form-textarea" id="contact-message" name="message" rows="5" required></textarea>
+      </div>
+
+      <button class="btn btn-outline" type="submit">Send message</button>
+      <p class="form-status" id="contact-form-status" role="status" aria-live="polite"></p>
+    </form>
   </section>
 
   <section class="section" id="shelf">
@@ -219,5 +242,6 @@
 
 <script src="js/script.js"></script>
 <script src="js/shelf.js"></script>
+<script src="js/contact.js"></script>
 </body>
 </html>
