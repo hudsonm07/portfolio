@@ -426,32 +426,6 @@ main,
 }
 
 /* Contact */
-.contact-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.contact-btn {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  width: 100%;
-  padding: 14px 18px;
-  border-radius: var(--radius-btn);
-  border: 1px solid var(--border);
-  background: transparent;
-  text-decoration: none;
-  color: var(--text);
-  transition: border-color 0.2s ease, color 0.2s ease;
-}
-
-.contact-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
 /* Contact form */
 .contact-form {
   margin-top: 24px;
@@ -574,25 +548,6 @@ main,
 .shelf-empty {
   color: var(--text-muted);
   font-size: 0.9rem;
-}
-
-.contact-btn .sidebar-label {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: inherit;
-  margin: 0;
-}
-
-.contact-btn .contact-value {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.contact-btn:hover .contact-value {
-  color: var(--accent);
 }
 
 /* Footer */
