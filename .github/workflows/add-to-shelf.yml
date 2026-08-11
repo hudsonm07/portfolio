@@ -50,6 +50,7 @@ jobs:
 
           IMAGE=$(get_meta "og:image")
           [ -z "$IMAGE" ] && IMAGE=$(get_meta "twitter:image")
+          IMAGE=$(echo "$IMAGE" | decode)
 
           SITE=$(get_meta "og:site_name" | decode)
           if [ -z "$SITE" ]; then
