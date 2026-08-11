@@ -2,8 +2,16 @@
   var list = document.getElementById("shelf-list");
   if (!list) return;
 
+  var ESCAPE_MAP = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
+
+  function escapeHtml(value) {
+    return String(value || "").replace(/[&<>"']/g, function (c) {
+      return ESCAPE_MAP[c];
+    });
+  }
+
   function renderEmpty(message) {
-    list.innerHTML = '<p class="shelf-empty">' + message + "</p>";
+    list.innerHTML = '<p class="shelf-empty">' + escapeHtml(message) + "</p>";
   }
 
   function renderItems(items) {
@@ -14,16 +22,20 @@
 
     list.innerHTML = items
       .map(function (item) {
+        var title = escapeHtml(item.title);
+        var siteName = escapeHtml(item.siteName);
+        var url = escapeHtml(item.url);
+
         var thumb = item.image
-          ? '<img class="shelf-thumb" src="' + item.image + '" alt="" loading="lazy">'
+          ? '<img class="shelf-thumb" src="' + escapeHtml(item.image) + '" alt="' + title + '" loading="lazy">'
           : '<div class="shelf-thumb shelf-thumb-empty" aria-hidden="true"></div>';
 
         return (
-          '<a class="shelf-card" href="' + item.url + '" target="_blank" rel="noopener">' +
+          '<a class="shelf-card" href="' + url + '" target="_blank" rel="noopener">' +
           thumb +
           '<div class="shelf-card-body">' +
-          '<p class="shelf-title">' + item.title + "</p>" +
-          '<p class="shelf-site">' + item.siteName + "</p>" +
+          '<p class="shelf-title">' + title + "</p>" +
+          '<p class="shelf-site">' + siteName + "</p>" +
           "</div>" +
           "</a>"
         );
