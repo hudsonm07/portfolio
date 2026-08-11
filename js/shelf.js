@@ -31,7 +31,7 @@
       .join("");
   }
 
-  fetch("data/shelf.json")
+  fetch("data/shelf.json?v=" + Date.now(), { cache: "no-store" })
     .then(function (res) {
       if (!res.ok) throw new Error("shelf.json request failed");
       return res.json();
