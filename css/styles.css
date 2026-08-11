@@ -503,6 +503,12 @@ main,
   cursor: pointer;
 }
 
+.form-note {
+  margin: -6px 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
 /* Reading Shelf */
 .shelf-list {
   display: grid;
@@ -633,6 +639,23 @@ main,
 .theme-toggle:hover {
   border-color: var(--accent);
   color: var(--accent);
+}
+
+.footer-bottom {
+  flex: 1 0 100%;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-bottom p {
+  margin: 0 0 6px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.footer-bottom p:last-child {
+  margin-bottom: 0;
 }
 
 #icon-moon {
