@@ -503,29 +503,6 @@ main,
   cursor: pointer;
 }
 
-.form-status {
-  margin: 0;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  min-height: 1.2em;
-}
-
-.form-status-success {
-  color: #3a7d44;
-}
-
-[data-theme="dark"] .form-status-success {
-  color: #7cc47f;
-}
-
-.form-status-error {
-  color: #b3413e;
-}
-
-[data-theme="dark"] .form-status-error {
-  color: #e08585;
-}
-
 /* Reading Shelf */
 .shelf-list {
   display: grid;
