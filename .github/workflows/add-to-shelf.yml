@@ -18,28 +18,44 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Fetch metadata and append to shelf.json
+      - name: Fetch Open Graph metadata and append to shelf.json
         env:
           ITEM_URL: ${{ github.event.inputs.url }}
-          IFRAMELY_API_KEY: ${{ secrets.IFRAMELY_API_KEY }}
         run: |
-          set -ex
-          ENC=$(jq -rn --arg u "$ITEM_URL" '$u|@uri')
-          RESPONSE=$(curl -s -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36" "https://iframe.ly/api/iframely?url=$ENC&api_key=$IFRAMELY_API_KEY")
+          set -e
 
-          TITLE=$(echo "$RESPONSE" | jq -r '.meta.title // empty')
+          HTML=$(curl -sL --max-time 15 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36" "$ITEM_URL")
+
+          get_meta() {
+            echo "$HTML" | grep -ioP "<meta[^>]+(property|name)=[\"']$1[\"'][^>]+content=[\"']\K[^\"']*" | head -1
+          }
+
+          decode() {
+            sed -e 's/&amp;/\&/g' -e 's/&quot;/"/g' -e "s/&#39;/'/g" -e "s/&apos;/'/g" -e 's/&lt;/</g' -e 's/&gt;/>/g'
+          }
+
+          TITLE=$(get_meta "og:title")
+          [ -z "$TITLE" ] && TITLE=$(get_meta "twitter:title")
+          [ -z "$TITLE" ] && TITLE=$(echo "$HTML" | grep -ioP '<title>\K[^<]*' | head -1)
+          TITLE=$(echo "$TITLE" | decode)
+
           if [ -z "$TITLE" ]; then
-            echo "Iframely didn't return a title for $ITEM_URL. Response:"
-            echo "$RESPONSE"
+            echo "Couldn't find a title for $ITEM_URL - the page may block automated requests or have no metadata."
             exit 1
           fi
 
-          DESC=$(echo "$RESPONSE" | jq -r '.meta.description // ""')
-          SITE=$(echo "$RESPONSE" | jq -r '.meta.site // empty')
+          DESC=$(get_meta "og:description")
+          [ -z "$DESC" ] && DESC=$(get_meta "description")
+          DESC=$(echo "$DESC" | decode)
+
+          IMAGE=$(get_meta "og:image")
+          [ -z "$IMAGE" ] && IMAGE=$(get_meta "twitter:image")
+
+          SITE=$(get_meta "og:site_name" | decode)
           if [ -z "$SITE" ]; then
             SITE=$(echo "$ITEM_URL" | awk -F/ '{print $3}')
           fi
-          IMAGE=$(echo "$RESPONSE" | jq -r '.links.thumbnail[0].href // ""')
+
           DATE_ADDED=$(date +%Y-%m-%d)
 
           NEW_ITEM=$(jq -n \
