@@ -24,7 +24,7 @@
   --text-muted: #939291;
   --text-muted-strong: #bebdbc;
   --border: #3a3a3a;
-  --accent: #e0a458;
+  --accent: #588ee0;
   --accent-text: #141414;
 }
 
@@ -294,7 +294,7 @@ main,
 .timeline-item.is-current .timeline-dot {
   border-color: var(--accent);
   background: var(--accent);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 15%, transparent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 100%, transparent);
 }
 
 .timeline-date {
