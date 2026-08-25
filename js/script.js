@@ -9,3 +9,14 @@
     localStorage.setItem("theme", next);
   });
 })();
+
+(function () {
+  var note = document.getElementById("reply-by-note");
+  if (!note) return;
+
+  var replyBy = new Date(Date.now() + 24 * 60 * 60 * 1000);
+  var dateStr = replyBy.toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
+  var timeStr = replyBy.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+
+  note.textContent = "I'll get back to you by " + dateStr + " at " + timeStr;
+})();
