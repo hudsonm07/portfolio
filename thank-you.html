@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thanks - Firstname Lastname</title>
 <meta name="robots" content="noindex">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-E3K7nJC5GJwhZQJOY7JMC5LaZzLaVcNU+ShWuGNkl1o='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https:; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'">
+<!-- The script-src hash above covers ONLY the inline theme-flash-prevention script below. If you edit that script's contents, you must recompute this sha256 hash or the site's dark/light mode will silently stop restoring on load. -->
 <script>
   (function () {
     var stored = localStorage.getItem("theme");
@@ -16,32 +19,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
-<style>
-  .thanks-wrap {
-    min-height: 70vh;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding: 64px 0;
-  }
-
-  .thanks-title {
-    font-family: var(--font-heading);
-    font-size: 2.25rem;
-    font-weight: 600;
-    letter-spacing: -0.025em;
-    margin: 0 0 12px;
-  }
-
-  .thanks-text {
-    font-size: 18px;
-    line-height: 1.7;
-    color: var(--text-muted);
-    max-width: 50ch;
-    margin: 0 0 28px;
-  }
-</style>
 </head>
 <body>
 

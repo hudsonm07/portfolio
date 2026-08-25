@@ -14,6 +14,9 @@
 <meta property="og:description" content="Personal portfolio site.">
 <meta property="og:image" content="https://hudsonm07.github.io/portfolio/images/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-E3K7nJC5GJwhZQJOY7JMC5LaZzLaVcNU+ShWuGNkl1o='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https:; connect-src 'self'; form-action 'self' https://api.web3forms.com; base-uri 'self'; object-src 'none'">
+<!-- The script-src hash above covers ONLY the inline theme-flash-prevention script below. If you edit that script's contents, you must recompute this sha256 hash or the site's dark/light mode will silently stop restoring on load. -->
 <script>
   (function () {
     var stored = localStorage.getItem("theme");
@@ -182,8 +185,8 @@
 
 </div>
 
-<div class="rule-bleed" aria-hidden="true" style="margin-bottom: 0;"></div>
-<footer class="footer" style="text-align: center; display: flex; flex-direction: column; align-items: center;">
+<div class="rule-bleed rule-bleed-flush" aria-hidden="true"></div>
+<footer class="footer footer-centered">
   <div class="footer-info">
     <p class="footer-name">Madden Hudson</p>
     <p class="footer-location">Virginia, USA</p>
